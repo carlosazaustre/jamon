@@ -4,7 +4,7 @@ const fs = require('fs')
 const MarkdownIt = require('markdown-it')
 const { config } = require('../config')
 
-class DataAdapter {
+class MarkdownLib {
   constructor () {
     this.md = new MarkdownIt()
   }
@@ -12,7 +12,7 @@ class DataAdapter {
   readFile (fileName) {
     let data
     try {
-      data = fs.readFileSync(`${config.dataPath}/${fileName}.md`, 'utf-8')
+      data = fs.readFileSync(`${config.paths.data}/${fileName}.md`, 'utf-8')
     } catch (err) {
       throw err
     }
@@ -20,10 +20,10 @@ class DataAdapter {
     return data
   }
 
-  render (data) {
+  renderData (data) {
     const rendered = this.md.render(data)
     return rendered
   }
 }
 
-module.exports = DataAdapter
+module.exports = MarkdownLib

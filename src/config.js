@@ -3,6 +3,8 @@
 const path = require('path')
 
 exports.config = {
-  dataPath: path.join(__dirname, '../data'),
-  publicPath: path.join(__dirname, '../public')
+  paths: {
+    data: path.join(__dirname, '../data'),
+    public: path.join(__dirname, '../public')
+  }
 }
