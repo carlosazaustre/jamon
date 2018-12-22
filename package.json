@@ -1,0 +1,37 @@
+{
+  "name": "jamon",
+  "version": "1.0.0",
+  "description": "Static website generator based in JAM stack. 100% spanish.",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "husky": "^1.2.1",
+    "standard": "^12.0.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "standard"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carlosazaustre/jamon.git"
+  },
+  "keywords": [
+    "jam",
+    "stack",
+    "static",
+    "site",
+    "generator",
+    "vue"
+  ],
+  "author": "Carlos Azaustre <cazaustre@gmail.com> (https://carlosazaustre.es)",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/carlosazaustre/jamon/issues"
+  },
+  "homepage": "https://github.com/carlosazaustre/jamon#readme",
+  "husky": {
+    "pre-commit": "npm run lint",
+    "pre-push": "npm run lint"
+  }
+}

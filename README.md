@@ -1,4 +1,4 @@
-# jamon
+# JAMon
 > Static website generator based in JAM stack. 100% spanish.
 
 👨🏻‍💻 WIP
