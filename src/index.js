@@ -15,8 +15,19 @@ function readAndConvert () {
   return result
 }
 
-function build () {
-  fs.writeFileSync(`${PUBLIC_PATH}/index.html`, readAndConvert())
+function generateFile () {
+  const content = readAndConvert()
+  const layout = `<!doctype html>
+    <html>
+      <head>
+        <title>Test</title>
+      </head>
+      <body>
+        <div id='app'>${content}</div>
+      </body>
+    </html>`.replace(/\n/gm, '')
+
+  fs.writeFileSync(`${PUBLIC_PATH}/index.html`, layout)
 }
 
-build()
+generateFile()
