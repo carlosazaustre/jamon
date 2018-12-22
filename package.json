@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Static website generator based in JAM stack. 100% spanish.",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "markdown-it": "^8.4.2"
+  },
   "devDependencies": {
     "husky": "^1.2.1",
     "standard": "^12.0.1"
