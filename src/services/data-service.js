@@ -18,6 +18,12 @@ class DataService {
       throw err
     }
   }
+
+  generateBatchFiles (filenamesArray) {
+    filenamesArray.forEach(async filename => {
+      await this.generateFile(filename)
+    })
+  }
 }
 
 module.exports = DataService

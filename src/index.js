@@ -1,11 +1,11 @@
 'use strict'
 
 const DataService = require('./services/data-service')
+
+const fileNames = [
+  'index',
+  'another-page'
+]
+
 const data = new DataService()
-
-function generateHTMLFiles () {
-  data.generateFile('index')
-  data.generateFile('another-page')
-}
-
-generateHTMLFiles()
+data.generateBatchFiles(fileNames)
