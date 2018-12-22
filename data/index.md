@@ -7,4 +7,4 @@ A list:
 - item 2
 - item 3
 
-A [link](https://google.com)
+A [link](another-page.html) to other page

@@ -1,4 +1,7 @@
+'use strict'
 
+function Layout (data) {
+  return `
   <!DOCTYPE html>
   <html lang="en">
   <head>
@@ -8,16 +11,9 @@
     <title>Document</title>
   </head>
   <body>
-    <h1>Test file</h1>
-<p>This is a markdown test file to render</p>
-<h2>Heading 2</h2>
-<p>A list:</p>
-<ul>
-<li>item 1</li>
-<li>item 2</li>
-<li>item 3</li>
-</ul>
-<p>A <a href="another-page.html">link</a> to other page</p>
-
+    ${data}
   </body>
-  </html> 
+  </html> `
+}
+
+module.exports = Layout

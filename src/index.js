@@ -1,33 +1,21 @@
 'use strict'
 
 const fs = require('fs')
-const path = require('path')
-const MarkdownIt = require('markdown-it')
+const DataAdapter = require('./lib/data')
+const Layout = require('./layouts/layout')
+const { config } = require('./config')
 
-const CONTENT_PATH = path.join(__dirname, '../data')
-const PUBLIC_PATH = path.join(__dirname, '../public')
+const adapter = new DataAdapter()
 
-const md = new MarkdownIt()
+function generateFiles () {
+  const data1 = adapter.readFile('index')
+  const file1 = adapter.render(data1)
 
-function readAndConvert () {
-  const data = fs.readFileSync(`${CONTENT_PATH}/example.md`, 'utf-8')
-  const result = md.render(data)
-  return result
+  const data2 = adapter.readFile('another-page')
+  const file2 = adapter.render(data2)
+
+  fs.writeFileSync(`${config.publicPath}/index.html`, Layout(file1))
+  fs.writeFileSync(`${config.publicPath}/another-page.html`, Layout(file2))
 }
 
-function generateFile () {
-  const content = readAndConvert()
-  const layout = `<!doctype html>
-    <html>
-      <head>
-        <title>Test</title>
-      </head>
-      <body>
-        <div id='app'>${content}</div>
-      </body>
-    </html>`.replace(/\n/gm, '')
-
-  fs.writeFileSync(`${PUBLIC_PATH}/index.html`, layout)
-}
-
-generateFile()
+generateFiles()
