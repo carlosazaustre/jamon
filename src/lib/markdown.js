@@ -10,19 +10,19 @@ class MarkdownLib {
   }
 
   readFile (fileName) {
-    let data
-    try {
-      data = fs.readFileSync(`${config.paths.data}/${fileName}.md`, 'utf-8')
-    } catch (err) {
-      throw err
-    }
-
-    return data
+    return new Promise((resolve, reject) => {
+      fs.readFile(`${config.paths.data}/${fileName}.md`, 'utf-8', (err, text) => {
+        if (err) {
+          reject(err)
+        }
+        resolve(text)
+      })
+    })
   }
 
-  renderData (data) {
-    const rendered = this.md.render(data)
-    return rendered
+  convertToHTML (text) {
+    const html = this.md.render(text)
+    return html
   }
 }
 

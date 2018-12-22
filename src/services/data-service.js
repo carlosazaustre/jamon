@@ -9,10 +9,14 @@ class DataService {
     this.engine = new EngineLib()
   }
 
-  generateFile (filename) {
-    const text = this.data.readFile(filename)
-    const html = this.data.renderData(text)
-    this.engine.renderTemplate(filename, html)
+  async generateFile (filename) {
+    try {
+      const text = await this.data.readFile(filename)
+      const html = await this.data.convertToHTML(text)
+      this.engine.renderPage(filename, html)
+    } catch (err) {
+      throw err
+    }
   }
 }
 

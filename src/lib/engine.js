@@ -10,9 +10,16 @@ class EngineLib {
     this.path = config.paths.public
   }
 
-  renderTemplate (filename, data) {
+  renderPage (filename, data) {
     const toRender = this.layout(data)
-    fs.writeFileSync(`${this.path}/${filename}.html`, toRender)
+    return new Promise((resolve, reject) => {
+      fs.writeFile(`${this.path}/${filename}.html`, toRender, (err, page) => {
+        if (err) {
+          reject(err)
+        }
+        resolve(page)
+      })
+    })
   }
 }
 
