@@ -11,14 +11,17 @@ class EngineLib {
   }
 
   renderPage (filename, data) {
-    const toRender = this.layout(data)
+    const template = this.layout(data)
     return new Promise((resolve, reject) => {
-      fs.writeFile(`${this.path}/${filename}.html`, toRender, (err, page) => {
-        if (err) {
-          reject(err)
-        }
-        resolve(page)
-      })
+      fs.writeFile(
+        `${this.path}/${filename}.html`,
+        template,
+        (err, page) => {
+          if (err) {
+            reject(err)
+          }
+          resolve(page)
+        })
     })
   }
 }

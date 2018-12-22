@@ -11,12 +11,15 @@ class MarkdownLib {
 
   readFile (fileName) {
     return new Promise((resolve, reject) => {
-      fs.readFile(`${config.paths.data}/${fileName}.md`, 'utf-8', (err, text) => {
-        if (err) {
-          reject(err)
-        }
-        resolve(text)
-      })
+      fs.readFile(
+        `${config.paths.data}/${fileName}.md`,
+        'utf-8',
+        (err, text) => {
+          if (err) {
+            reject(err)
+          }
+          resolve(text)
+        })
     })
   }
 
