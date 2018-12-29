@@ -19,6 +19,8 @@ class PostService {
   }
 }
 
+module.exports = PostService
+
 // Example test
 async function test () {
   const service = new PostService()
