@@ -6,9 +6,9 @@ const util = require('util')
 const MarkdownIt = require('markdown-it')
 
 class DataLib {
-  constructor (dir) {
+  constructor (folder) {
     this.md = new MarkdownIt()
-    this.dataPath = dir
+    this.dataPath = path.normalize(folder)
   }
 
   render (file) {
@@ -20,5 +20,4 @@ class DataLib {
   }
 }
 
-const data = new DataLib('example')
-data.render('post').then(html => console.log(html))
+module.exports = DataLib
