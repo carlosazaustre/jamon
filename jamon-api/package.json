@@ -1,0 +1,11 @@
+{
+  "name": "@jamon/api",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@jamon/data": "file:../jamon-data",
+    "@jamon/config": "file:../jamon-config"
+  }
+}

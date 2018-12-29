@@ -1,9 +1,10 @@
 'use strict'
 
+const path = require('path')
 const pkg = require('../package.json')
 
 const config = {
-  posts: 'posts'
+  posts: path.resolve(__dirname, '../posts')
 }
 
 Object.assign(config, { pkg })
