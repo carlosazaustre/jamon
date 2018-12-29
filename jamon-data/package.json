@@ -1,0 +1,10 @@
+{
+  "name": "@jamon/data",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "markdown-it": "^8.4.2"
+  }
+}
