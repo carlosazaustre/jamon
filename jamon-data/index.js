@@ -14,26 +14,33 @@ class DataLib {
     this.dataPath = path.normalize(folder)
   }
 
-  render (file) {
-    return readFile(`${this.dataPath}/${file}`, 'utf-8')
-      .then(text => this.md.render(text))
-      .catch(err => console.log(err))
+  async render (file) {
+    let rendered
+    try {
+      const text = await readFile(`${this.dataPath}/${file}`, 'utf-8')
+      rendered = this.md.render(text)
+    } catch (error) {
+      // TODO: Use proper error handler
+      console.log(error)
+    }
+
+    return rendered
   }
 
-  batchRender () {
-    return readdir(this.dataPath)
-      .then(files => {
-        let promises = []
-        console.log('files')
-        files.forEach(file => {
-          console.log(file)
-          promises.push(this.render(file))
-        })
+  async batchRender () {
+    let files
+    let values
+    let promises = []
+    try {
+      files = await readdir(this.dataPath)
+      files.forEach(file => promises.push(this.render(file)))
+      values = await Promise.all(promises)
+    } catch (error) {
+      // TODO: Use proper error handler
+      console.log(error)
+    }
 
-        return Promise.all(promises)
-          .then(values => console.log(values))
-      })
-      .catch(err => console.log(err))
+    return values
   }
 }
 

@@ -9,7 +9,8 @@ class PostService {
   }
 
   async getPosts () {
-    await this.data.batchRender()
+    const posts = await this.data.batchRender()
+    return posts
   }
 
   async getPost (filename) {
@@ -18,12 +19,12 @@ class PostService {
   }
 }
 
-async function read () {
+// Example test
+async function test () {
   const service = new PostService()
-  // const post = await service.getPost('index.md')
-  // console.log(post)
+  const post = await service.getPost('index.md')
+  console.log(post)
   const posts = await service.getPosts()
   console.log(posts)
 }
-
-read()
+test()
